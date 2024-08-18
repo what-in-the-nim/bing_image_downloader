@@ -1,25 +1,21 @@
-import os
 import shutil
 import sys
 from pathlib import Path
 
-try:
-    from bing import Bing
-except ImportError:  # Python 3
-    from .bing import Bing
+from .bing import Bing
 
 
 def download(
-    query,
-    limit=100,
-    output_dir="dataset",
-    adult_filter_off=True,
-    force_replace=False,
-    timeout=60,
-    filter="",
-    verbose=True,
-):
-
+    query: str,
+    limit: int = 100,
+    output_dir: str = "dataset",
+    adult_filter_off: bool = True,
+    force_replace: bool = False,
+    timeout: int = 60,
+    filter: str = "",
+    verbose: bool = True,
+) -> None:
+    """Download images from Bing Image Search"""
     # engine = 'bing'
     if adult_filter_off:
         adult = "off"
